@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @my_product.product_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @my_product.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @my_product.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @my_product.description %>
+</p>
+
+<p>
+  <strong>Specs:</strong>
+  <%= @my_product.specs %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @my_product.tags %>
+</p>
+
+<p>
+  <strong>Permalink:</strong>
+  <%= @my_product.permalink %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @my_product.position %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @my_product.cost %>
+</p>
+
+<p>
+  <strong>Hts:</strong>
+  <%= @my_product.hts %>
+</p>
+
+<%= link_to 'Edit', edit_my_product_path(@my_product) %> |
+<%= link_to 'Back', my_products_path %>
