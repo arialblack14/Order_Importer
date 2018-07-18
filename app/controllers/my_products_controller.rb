@@ -5,6 +5,15 @@ class MyProductsController < ApplicationController
   # GET /my_products.json
   def index
     @my_products = MyProduct.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @products.to_csv(['name', 'category', 'price']) }
+    end
+  end
+  
+  def import
+    Product.import(params[:file])
+    redirect_to root_url, notice: "Products imported."
   end
 
   # GET /my_products/1
