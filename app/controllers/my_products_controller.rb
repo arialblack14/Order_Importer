@@ -7,12 +7,13 @@ class MyProductsController < ApplicationController
     @my_products = MyProduct.all
     respond_to do |format|
       format.html
-      format.csv { send_data @products.to_csv(['name', 'category', 'price']) }
+      format.csv { send_data @my_products.to_csv(['product_id','name','price','description','specs','tags','permalink','position','cost','hts'])}
     end
   end
   
   def import
-    Product.import(params[:file])
+    MyProduct.delete_all
+    MyProduct.import(params[:file])
     redirect_to root_url, notice: "Products imported."
   end
 
