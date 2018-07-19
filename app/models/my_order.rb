@@ -13,6 +13,9 @@ class MyOrder < ApplicationRecord
       # product_hash = row.to_hash
       # product = find_or_create_by!(name: product_hash['name'], category: product_hash['category'])
       # product.update_attributes(product_hash)
+      shop = Shop.first
+      session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
+      ShopifyAPI::Base.activate_session(session)
       MyOrder .create! row.to_hash
       ShopifyAPI::Order .create! row.to_hash
     end
