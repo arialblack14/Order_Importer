@@ -7,12 +7,12 @@ class MyOrdersController < ApplicationController
     @my_orders = MyOrder.all
     respond_to do |format|
       format.html
-      format.csv { send_data @my_orders.to_csv(['Name','Email','Financial Status','Paid at','Fulfillment Status','Fulfilled at','Accepts Marketing','Currency,Subtotal','Shipping','Taxes','Total','Discount Code',
-      'Discount Amount','Shipping Method','Created at','Lineitem quantity','Lineitem name','Lineitem price','Lineitem compare at price','Lineitem sku','Lineitem requires shipping',
-      'Lineitem taxable','Lineitem fulfillment status','Billing Name','Billing Street','Billing Address1','Billing Address2','Billing Company','Billing City','Billing Zip','Billing Province',
-      'Billing Country','Billing Phone','Shipping Name','Shipping Street','Shipping Address1','Shipping Address2','Shipping Company','Shipping City','Shipping Zip','Shipping Province',
-      'Shipping Country','Shipping Phone','Notes','Note Attributes','Cancelled at','Payment Method','Payment Reference','Refunded Amount','Vendor','Id','Tags',
-      'Risk Level','Source','Lineitem discount','Tax 1 Name','Tax 1 Value','Tax 2 Name','Tax 2 Value','Tax 3 Name','Tax 3 Value','Tax 4 Name','Tax 4 Value','Tax 5 Name','Tax 5 Value','Phone']) }
+      format.csv { send_data @my_orders.to_csv(['Name','Email','Financial_Status','Paid_at','Fulfillment_Status','Fulfilled_at','Accepts_Marketing','Currency,Subtotal','Shipping','Taxes','Total','Discount_Code',
+      'Discount_Amount','Shipping_Method','Created_at','Lineitem_quantity','Lineitem_name','Lineitem_price','Lineitem_compare_at_price','Lineitem_sku','Lineitem_requires_shipping',
+      'Lineitem_taxable','Lineitem_fulfillment_status','Billing_Name','Billing_Street','Billing_Address1','Billing_Address2','Billing_Company','Billing_City','Billing_Zip','Billing_Province',
+      'Billing_Country','Billing_Phone','Shipping_Name','Shipping_Street','Shipping_Address1','Shipping_Address2','Shipping_Company','Shipping_City','Shipping_Zip','Shipping_Province',
+      'Shipping_Country','Shipping_Phone','Notes','Note_Attributes','Cancelled_at','Payment_Method','Payment_Reference','Refunded_Amount','Vendor','Id','Tags',
+      'Risk_Level','Source','Lineitem_discount','Tax_1_Name','Tax_1_Value','Tax_2_Name','Tax_2_Value','Tax_3_Name','Tax_3_Value','Tax_4_Name','Tax_4_Value','Tax_5_Name','Tax_5_Value','Phone']) }
     end
   end
   def import
