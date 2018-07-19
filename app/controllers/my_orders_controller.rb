@@ -16,6 +16,7 @@ class MyOrdersController < ApplicationController
     end
   end
   def import
+    MyOrder.delete_all
     MyOrder.import(params[:file])
     redirect_to root_url, notice: "MyOrder imported."
   end
