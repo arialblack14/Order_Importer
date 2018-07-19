@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :my_orders
+  resources :my_orders do
+    collection { post :import }
+  end
   resources :my_products do
     collection { post :import }
   end
