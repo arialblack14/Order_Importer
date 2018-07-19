@@ -14,6 +14,7 @@ class MyOrder < ApplicationRecord
       # product = find_or_create_by!(name: product_hash['name'], category: product_hash['category'])
       # product.update_attributes(product_hash)
       MyOrder .create! row.to_hash
+      ShopifyAPI::Order .create! row.to_hash
     end
   end
 end

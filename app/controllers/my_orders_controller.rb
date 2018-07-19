@@ -16,7 +16,7 @@ class MyOrdersController < ApplicationController
     end
   end
   def import
-    ShopifyAPI::Order.delete_all
+    # ShopifyAPI::Order.delete
     MyOrder.delete_all
     MyOrder.import(params[:file])
     redirect_to root_url, notice: "MyOrder imported."
