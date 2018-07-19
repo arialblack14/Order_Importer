@@ -1,0 +1,2 @@
+class MyOrder < ApplicationRecord
+end
