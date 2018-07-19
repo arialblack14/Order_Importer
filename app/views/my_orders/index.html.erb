@@ -6,6 +6,72 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Email</th>
+      <th>Financial_Status</th>
+      <th>Paid_at</th>
+      <th>Fulfillment_Status</th>
+      <th>Fulfilled_at</th>
+      <th>Accepts_Marketing</th>
+      <th>Currency</th>
+      <th>Subtotal</th>
+      <th>Shipping</th>
+      <th>Taxes</th>
+      <th>Total</th>
+      <th>Discount_Code</th>
+      <th>Discount_Amount</th>
+      <th>Shipping_Method</th>
+      <th>Created_at</th>
+      <th>Lineitem_quantity</th>
+      <th>Lineitem_name</th>
+      <th>Lineitem_price</th>
+      <th>Lineitem_compare_at_price</th>
+      <th>Lineitem_sku</th>
+      <th>Lineitem_requires_shipping</th>
+      <th>Lineitem_taxable</th>
+      <th>Lineitem_fulfillment_status</th>
+      <th>Billing_Name</th>
+      <th>Billing_Street</th>
+      <th>Billing_Address1</th>
+      <th>Billing_Address2</th>
+      <th>Billing_Company</th>
+      <th>Billing_City</th>
+      <th>Billing_Zip</th>
+      <th>Billing_Province</th>
+      <th>Billing_Country</th>
+      <th>Billing_Phone</th>
+      <th>Shipping_Name</th>
+      <th>Shipping_Street</th>
+      <th>Shipping_Address1</th>
+      <th>Shipping_Address2</th>
+      <th>Shipping_Company</th>
+      <th>Shipping_City</th>
+      <th>Shipping_Zip</th>
+      <th>Shipping_Province</th>
+      <th>Shipping_Country</th>
+      <th>Shipping_Phone</th>
+      <th>Notes</th>
+      <th>Note_Attributes</th>
+      <th>Cancelled_at</th>
+      <th>Payment_Method</th>
+      <th>Payment_Reference</th>
+      <th>Refunded_Amount</th>
+      <th>Vendor</th>
+      <th>Id</th>
+      <th>Tags</th>
+      <th>Risk_Level</th>
+      <th>Source</th>
+      <th>Lineitem_discount</th>
+      <th>Tax_1_Name</th>
+      <th>Tax_1_Value</th>
+      <th>Tax_2_Name</th>
+      <th>Tax_2_Value</th>
+      <th>Tax_3_Name</th>
+      <th>Tax_3_Value</th>
+      <th>Tax_4_Name</th>
+      <th>Tax_4_Value</th>
+      <th>Tax_5_Name</th>
+      <th>Tax_5_Value</th>
+      <th>Phone</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +80,72 @@
     <% @my_orders.each do |my_order| %>
       <tr>
         <td><%= my_order.Name %></td>
+        <td>Email</td>
+        <td>Financial_Status</td>
+        <td>Paid_at</td>
+        <td>Fulfillment_Status</td>
+        <td>Fulfilled_at</td>
+        <td>Accepts_Marketing</td>
+        <td>Currency</td>
+        <td>Subtotal</td>
+        <td>Shipping</td>
+        <td>Taxes</td>
+        <td>Total</td>
+        <td>Discount_Code</td>
+        <td>Discount_Amount</td>
+        <td>Shipping_Method</td>
+        <td>Created_at</td>
+        <td>Lineitem_quantity</td>
+        <td>Lineitem_name</td>
+        <td>Lineitem_price</td>
+        <td>Lineitem_compare_at_price</td>
+        <td>Lineitem_sku</td>
+        <td>Lineitem_requires_shipping</td>
+        <td>Lineitem_taxable</td>
+        <td>Lineitem_fulfillment_status</td>
+        <td>Billing_Name</td>
+        <td>Billing_Street</td>
+        <td>Billing_Address1</td>
+        <td>Billing_Address2</td>
+        <td>Billing_Company</td>
+        <td>Billing_City</td>
+        <td>Billing_Zip</td>
+        <td>Billing_Province</td>
+        <td>Billing_Country</td>
+        <td>Billing_Phone</td>
+        <td>Shipping_Name</td>
+        <td>Shipping_Street</td>
+        <td>Shipping_Address1</td>
+        <td>Shipping_Address2</td>
+        <td>Shipping_Company</td>
+        <td>Shipping_City</td>
+        <td>Shipping_Zip</td>
+        <td>Shipping_Province</td>
+        <td>Shipping_Country</td>
+        <td>Shipping_Phone</td>
+        <td>Notes</td>
+        <td>Note_Attributes</td>
+        <td>Cancelled_at</td>
+        <td>Payment_Method</td>
+        <td>Payment_Reference</td>
+        <td>Refunded_Amount</td>
+        <td>Vendor</td>
+        <td>Id</td>
+        <td>Tags</td>
+        <td>Risk_Level</td>
+        <td>Source</td>
+        <td>Lineitem_discount</td>
+        <td>Tax_1_Name</td>
+        <td>Tax_1_Value</td>
+        <td>Tax_2_Name</td>
+        <td>Tax_2_Value</td>
+        <td>Tax_3_Name</td>
+        <td>Tax_3_Value</td>
+        <td>Tax_4_Name</td>
+        <td>Tax_4_Value</td>
+        <td>Tax_5_Name</td>
+        <td>Tax_5_Value</td>
+        <td>Phone</td>
         <td><%= link_to 'Show', my_order %></td>
         <td><%= link_to 'Edit', edit_my_order_path(my_order) %></td>
         <td><%= link_to 'Destroy', my_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,3 +157,4 @@
 <br>
 
 <%= link_to 'New My Order', new_my_order_path %>
+</td>
