@@ -19,7 +19,7 @@ class MyOrder < ApplicationRecord
       session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
       ShopifyAPI::Base.activate_session(session)
       MyOrder .create! row.to_hash
-      ShopifyAPI::Order .create!(email:row.to_hash["Email"])
+      ShopifyAPI::Order .create!(email:row.to_hash["Email"], line_items:ShopifyAPI::LineItem.new(title:"dummy",quantity:1,price:2333.0,vendor:"combatgent_test"))
     end
   end
 end
