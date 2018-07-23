@@ -33,6 +33,8 @@ class MyOrder < ApplicationRecord
       total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
       line_items:[ShopifyAPI::LineItem.new(title:"dummy",quantity:1,price:"2333.00",sku:"0"),ShopifyAPI::LineItem.new(title:"zzzzzz",quantity:1,price:"2333.00",sku:"0"),],confirmed:true,
       total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00") 
+      
+      
       cur_order_number = row.to_hash["OrderId"]
       if(pre_order_number == cur_order_number)
         pre_line_item.push(ShopifyAPI::LineItem.new(name:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
@@ -47,9 +49,15 @@ class MyOrder < ApplicationRecord
         pre_order_number = cur_order_number
       else
         string_pre_total_price = pre_total_price.to_s
-        ShopifyAPI::Order.create!(email:pre_email, total_price:string_pre_total_price, fulfillment_status:"fulfilled", send_receipt:true,
-        financial_status:"pending", send_fulfillment_receipt:true, order_number:pre_order_number, total_discounts:"0.00",
-        "currency":"USD",line_items:pre_line_item, shipping_address: pre_address)
+        # ShopifyAPI::Order.create!(email:pre_email, total_price:string_pre_total_price, fulfillment_status:"fulfilled", send_receipt:true,
+        # financial_status:"pending", send_fulfillment_receipt:true, order_number:pre_order_number, total_discounts:"0.00",
+        # "currency":"USD",line_items:pre_line_item, shipping_address: pre_address)
+        
+        
+        ShopifyAPI::Order.create(email:pre_email,fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
+        total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
+        line_items:[ShopifyAPI::LineItem.new(title:"dummy",quantity:1,price:"2333.00",sku:"0"),ShopifyAPI::LineItem.new(title:"zzzzzz",quantity:1,price:"2333.00",sku:"0"),],confirmed:true,
+        total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00") 
         
         pre_total_price = row.to_hash["Lineitem_price"].to_f
         
