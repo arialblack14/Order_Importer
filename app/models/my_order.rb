@@ -29,10 +29,10 @@ class MyOrder < ApplicationRecord
       # ShopifyAPI::Base.activate_session(session)
       MyOrder .create! row.to_hash
       #ShopifyAPI::Order .create!(email:row.to_hash["Email"], line_items: [ShopifyAPI::LineItem.new(title:"dummy",quantity:1)])
-      # ShopifyAPI::Order.create(email:row.to_hash["Email"],fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
-      # total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
-      # line_items:[ShopifyAPI::LineItem.new(title:"dummy",quantity:1,price:"2333.00",sku:"0"),ShopifyAPI::LineItem.new(title:"zzzzzz",quantity:1,price:"2333.00",sku:"0"),],confirmed:true,
-      # total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00") 
+      ShopifyAPI::Order.create(email:row.to_hash["Email"],fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
+      total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
+      line_items:[ShopifyAPI::LineItem.new(title:"dummy",quantity:1,price:"2333.00",sku:"0"),ShopifyAPI::LineItem.new(title:"zzzzzz",quantity:1,price:"2333.00",sku:"0"),],confirmed:true,
+      total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00") 
       cur_order_number = row.to_hash["OrderId"]
       if(pre_order_number == cur_order_number)
         pre_line_item.push(ShopifyAPI::LineItem.new(name:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
