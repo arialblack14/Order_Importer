@@ -41,7 +41,6 @@ class MyOrder < ApplicationRecord
         pre_email = row.to_hash["Email"]
         pre_order_number = cur_order_number
       else
-        sleep(1)
         ShopifyAPI::Order.create(email:pre_email, order_number:pre_order_number, line_items:pre_line_item, shipping_address: pre_address)
         pre_line_item.clear
         pre_line_item.push(ShopifyAPI::LineItem.new(name:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
