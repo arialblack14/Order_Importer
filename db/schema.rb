@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_19_052941) do
+ActiveRecord::Schema.define(version: 2018_07_23_193555) do
 
   create_table "my_orders", force: :cascade do |t|
     t.string "Name"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2018_07_19_052941) do
     t.string "Payment_Reference"
     t.float "Refunded_Amount"
     t.string "Vendor"
-    t.float "OrderId"
+    t.string "OrderId"
     t.string "Tags"
     t.string "Risk_Level"
     t.string "Source"
