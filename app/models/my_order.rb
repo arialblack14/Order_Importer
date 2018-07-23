@@ -26,7 +26,6 @@ class MyOrder < ApplicationRecord
       # session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
       # ShopifyAPI::Base.activate_session(session)
       MyOrder .create! row.to_hash
-      sleep(1)
       #ShopifyAPI::Order .create!(email:row.to_hash["Email"], line_items: [ShopifyAPI::LineItem.new(title:"dummy",quantity:1)])
       # ShopifyAPI::Order.create(email:row.to_hash["Email"],fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
       # total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
@@ -42,6 +41,7 @@ class MyOrder < ApplicationRecord
         pre_email = row.to_hash["Email"]
         pre_order_number = cur_order_number
       else
+        sleep(1)
         ShopifyAPI::Order.create(email:pre_email, order_number:pre_order_number, line_items:pre_line_item, shipping_address: pre_address)
         pre_line_item.clear
         pre_line_item.push(ShopifyAPI::LineItem.new(name:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
