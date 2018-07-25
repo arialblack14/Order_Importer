@@ -18,6 +18,7 @@ class MyOrder < ApplicationRecord
     pre_address = nil
     
     pre_total_price = 0
+    string_pre_total_price = nil
     CSV.foreach(file.path, headers: true, encoding: 'iso-8859-1:utf-8') do |row|
       # product_hash = row.to_hash
       # product = find_or_create_by!(name: product_hash['name'], category: product_hash['category'])
@@ -74,6 +75,7 @@ class MyOrder < ApplicationRecord
         pre_order_number = cur_order_number
       end
     end
+    string_pre_total_price = pre_total_price.to_s
     ShopifyAPI::Order.create!(email:pre_email,fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
         total_price:string_pre_total_price,subtotal:string_pre_total_price,total_tax:"0.00","currency":"USD",financial_status:"pending",
         line_items:pre_line_item,confirmed:true,
