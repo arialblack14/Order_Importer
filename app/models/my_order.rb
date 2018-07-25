@@ -38,7 +38,7 @@ class MyOrder < ApplicationRecord
       
       cur_order_number = row.to_hash["OrderId"]
       if(pre_order_number == cur_order_number)
-        pre_line_item.push(ShopifyAPI::LineItem.new(title:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
+        pre_line_item.push(ShopifyAPI::LineItem.new(title:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]],quantity:row.to_hash["Lineitem_quantity"]))
         
         pre_total_price = pre_total_price + row.to_hash["Lineitem_price"].to_f
         
@@ -54,7 +54,7 @@ class MyOrder < ApplicationRecord
         # financial_status:"pending", send_fulfillment_receipt:true, order_number:pre_order_number, total_discounts:"0.00",
         # "currency":"USD",line_items:pre_line_item, shipping_address: pre_address)
         
-        puts pre_line_item[0]
+        puts string_pre_total_price
         
         
         ShopifyAPI::Order.create!(email:pre_email,fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
@@ -65,7 +65,7 @@ class MyOrder < ApplicationRecord
         pre_total_price = row.to_hash["Lineitem_price"].to_f
         
         pre_line_item.clear
-        pre_line_item.push(ShopifyAPI::LineItem.new(title:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
+        pre_line_item.push(ShopifyAPI::LineItem.new(title:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]],quantity:row.to_hash["Lineitem_quantity"]))
         
         pre_address = ShopifyAPI::ShippingAddress.new(address1:row.to_hash["Shipping_Address1"], address2:row.to_hash["Shipping_Address2"],
         province:row.to_hash["Shipping_Province"], country_code:row.to_hash["Shipping_Country"], zip:row.to_hash["Shipping_Zip"])
