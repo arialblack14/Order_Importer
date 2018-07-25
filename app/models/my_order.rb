@@ -14,7 +14,7 @@ class MyOrder < ApplicationRecord
     ShopifyAPI::Base.activate_session(session)
     pre_order_number = "R865127007"
     pre_line_item = []
-    pre_email = "coltonschumacher@gmail.com"
+    pre_email = "yyy1@gmail.com"
     pre_address = nil
     
     pre_total_price = 0
