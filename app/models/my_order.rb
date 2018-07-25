@@ -64,6 +64,8 @@ class MyOrder < ApplicationRecord
         
         #puts string_pre_total_price
         
+        puts pre_address.address1
+        
         
         ShopifyAPI::Order.create!(email:pre_email,fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
         total_price:string_pre_total_price,subtotal:string_pre_total_price,total_tax:"0.00","currency":"USD",financial_status:"pending",
