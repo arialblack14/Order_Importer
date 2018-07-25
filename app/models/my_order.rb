@@ -28,7 +28,7 @@ class MyOrder < ApplicationRecord
       total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
       line_items:[ShopifyAPI::LineItem.new(title:"dummy",quantity:1,price:"2333.00",sku:"0"),ShopifyAPI::LineItem.new(title:"zzzzzz",quantity:1,price:"2333.00",sku:"0"),],confirmed:true,
       total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00", 
-      addresses: [ShopifyAPI::ShippingAddress.new(first_name:"go", last_name:"went",address1:"123", address2:"345",
+      address: [ShopifyAPI::ShippingAddress.new(first_name:"go", last_name:"went",address1:"123", address2:"345",
         province:"345", country_code:"4444444", zip:"555555555", phone:"333-444-5555")]) 
     CSV.foreach(file.path, headers: true, encoding: 'iso-8859-1:utf-8') do |row|
       # product_hash = row.to_hash
