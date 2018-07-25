@@ -12,10 +12,10 @@ class MyOrder < ApplicationRecord
     shop = Shop.first
     session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
     ShopifyAPI::Base.activate_session(session)
-    puts CSV.readlines(file.path)[1]
-    pre_order_number = "R865127007"
+    first_row = CSV.readlines(file.path)[1]
+    pre_order_number = first_row.to_hash["OrderId"]#"R865127007"
     pre_line_item = []
-    pre_email = "yyy1@gmail.com"
+    pre_email = first_row.to_hash["Email"]
     pre_address = nil
     
     pre_total_price = 0
