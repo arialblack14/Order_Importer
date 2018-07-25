@@ -12,8 +12,6 @@ class MyOrder < ApplicationRecord
     shop = Shop.first
     session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
     ShopifyAPI::Base.activate_session(session)
-    first_row = CSV.readlines(file.path)[1]
-    puts first_row
     
     pre_order_number = nil
     CSV.foreach(file.path, headers: true, encoding: 'iso-8859-1:utf-8') do |row|
