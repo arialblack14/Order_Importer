@@ -54,6 +54,8 @@ class MyOrder < ApplicationRecord
         # financial_status:"pending", send_fulfillment_receipt:true, order_number:pre_order_number, total_discounts:"0.00",
         # "currency":"USD",line_items:pre_line_item, shipping_address: pre_address)
         
+        puts pre_line_item[0]
+        
         
         ShopifyAPI::Order.create!(email:pre_email,fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
         total_price:string_pre_total_price,subtotal:string_pre_total_price,total_tax:"0.00","currency":"USD",financial_status:"pending",
