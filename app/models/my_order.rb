@@ -14,9 +14,14 @@ class MyOrder < ApplicationRecord
     ShopifyAPI::Base.activate_session(session)
     first_row = CSV.readlines(file.path)[1]
     puts first_row
-    pre_order_number = first_row.to_hash["OrderId"]#"R865127007"
+    
+    pre_order_number = nil
+    CSV.foreach(file.path, headers: true, encoding: 'iso-8859-1:utf-8') do |row|
+      pre_order_number = row.to_hash["OrderId"]
+      break
+    end
     pre_line_item = []
-    pre_email = first_row.to_hash["Email"]
+    pre_email = nil
     pre_address = nil
     
     pre_total_price = 0
