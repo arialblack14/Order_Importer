@@ -60,7 +60,7 @@ class MyOrder < ApplicationRecord
         ShopifyAPI::Order.create!(email:pre_email,fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
         total_price:string_pre_total_price,subtotal:string_pre_total_price,total_tax:"0.00","currency":"USD",financial_status:"pending",
         line_items:pre_line_item,confirmed:true,
-        total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00") 
+        total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00", shipping_address: pre_address) 
         
         pre_total_price = row.to_hash["Lineitem_price"].to_f
         
@@ -73,8 +73,11 @@ class MyOrder < ApplicationRecord
         pre_email = row.to_hash["Email"]
         pre_order_number = cur_order_number
       end
-      
     end
+    ShopifyAPI::Order.create!(email:pre_email,fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
+        total_price:string_pre_total_price,subtotal:string_pre_total_price,total_tax:"0.00","currency":"USD",financial_status:"pending",
+        line_items:pre_line_item,confirmed:true,
+        total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00",shipping_address: pre_address)
   end
 end
 
