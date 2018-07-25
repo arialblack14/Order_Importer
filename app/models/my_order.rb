@@ -38,7 +38,7 @@ class MyOrder < ApplicationRecord
       
       cur_order_number = row.to_hash["OrderId"]
       if(pre_order_number == cur_order_number)
-        pre_line_item.push(ShopifyAPI::LineItem.new(name:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
+        pre_line_item.push(ShopifyAPI::LineItem.new(title:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
         
         pre_total_price = pre_total_price + row.to_hash["Lineitem_price"].to_f
         
@@ -65,7 +65,7 @@ class MyOrder < ApplicationRecord
         pre_total_price = row.to_hash["Lineitem_price"].to_f
         
         pre_line_item.clear
-        pre_line_item.push(ShopifyAPI::LineItem.new(name:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
+        pre_line_item.push(ShopifyAPI::LineItem.new(title:row.to_hash["Lineitem_name"], price:row.to_hash["Lineitem_price"], properties:[name:"size", value:row.to_hash["Notes"]]))
         
         pre_address = ShopifyAPI::ShippingAddress.new(address1:row.to_hash["Shipping_Address1"], address2:row.to_hash["Shipping_Address2"],
         province:row.to_hash["Shipping_Province"], country_code:row.to_hash["Shipping_Country"], zip:row.to_hash["Shipping_Zip"])
