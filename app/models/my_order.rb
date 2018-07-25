@@ -13,6 +13,7 @@ class MyOrder < ApplicationRecord
     session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
     ShopifyAPI::Base.activate_session(session)
     first_row = CSV.readlines(file.path)[1]
+    puts first_row
     pre_order_number = first_row.to_hash["OrderId"]#"R865127007"
     pre_line_item = []
     pre_email = first_row.to_hash["Email"]
@@ -30,7 +31,7 @@ class MyOrder < ApplicationRecord
       # session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
       # ShopifyAPI::Base.activate_session(session)
       #MyOrder .create! row.to_hash
-      puts "import success"
+      #puts "import success"
       #ShopifyAPI::Order .create!(email:row.to_hash["Email"], line_items: [ShopifyAPI::LineItem.new(title:"dummy",quantity:1)])
       # ShopifyAPI::Order.create(email:row.to_hash["Email"],fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
       # total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
@@ -56,7 +57,7 @@ class MyOrder < ApplicationRecord
         # financial_status:"pending", send_fulfillment_receipt:true, order_number:pre_order_number, total_discounts:"0.00",
         # "currency":"USD",line_items:pre_line_item, shipping_address: pre_address)
         
-        puts string_pre_total_price
+        #puts string_pre_total_price
         
         
         ShopifyAPI::Order.create!(email:pre_email,fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
