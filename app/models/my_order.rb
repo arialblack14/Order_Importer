@@ -12,6 +12,7 @@ class MyOrder < ApplicationRecord
     shop = Shop.first
     session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
     ShopifyAPI::Base.activate_session(session)
+    puts CSV.readline(file.path)[1]
     pre_order_number = "R865127007"
     pre_line_item = []
     pre_email = "yyy1@gmail.com"
