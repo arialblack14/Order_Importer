@@ -27,7 +27,8 @@ class MyOrder < ApplicationRecord
       # puts row.to_hash["Email"]
       # session = ShopifyAPI::Session.new(shop.shopify_domain, shop.shopify_token, '')
       # ShopifyAPI::Base.activate_session(session)
-      MyOrder .create! row.to_hash
+      #MyOrder .create! row.to_hash
+      puts "import success"
       #ShopifyAPI::Order .create!(email:row.to_hash["Email"], line_items: [ShopifyAPI::LineItem.new(title:"dummy",quantity:1)])
       ShopifyAPI::Order.create(email:row.to_hash["Email"],fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
       total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
