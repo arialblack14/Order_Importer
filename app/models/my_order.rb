@@ -24,6 +24,11 @@ class MyOrder < ApplicationRecord
     
     pre_total_price = 0
     string_pre_total_price = nil
+      ShopifyAPI::Order.create!(email:"goooo@example.com",fulfillment_status:"fulfilled",send_receipt:true,send_fulfillment_receipt:true,
+      total_price:"2333.00",subtotal:"2331.00",total_tax:"0.00","currency":"USD",financial_status:"pending",
+      line_items:[ShopifyAPI::LineItem.new(title:"dummy",quantity:1,price:"2333.00",sku:"0"),ShopifyAPI::LineItem.new(title:"zzzzzz",quantity:1,price:"2333.00",sku:"0"),],confirmed:true,
+      total_discounts:"0.00",total_line_items_price:"2333.00",total_price_usd:"2333.00", shipping_address: ShopifyAPI::ShippingAddress.new(address1:"123", address2:"345",
+        province:"345", country_code:"4444444", zip:"555555555")) 
     CSV.foreach(file.path, headers: true, encoding: 'iso-8859-1:utf-8') do |row|
       # product_hash = row.to_hash
       # product = find_or_create_by!(name: product_hash['name'], category: product_hash['category'])
